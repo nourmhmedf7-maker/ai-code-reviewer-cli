@@ -28,17 +28,16 @@ The review always contains three sections:
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/ai-code-reviewer-cli.git
+git clone https://github.com/nourm0hamed/ai-code-reviewer-cli.git
 cd ai-code-reviewer-cli
 ```
 
-Create a virtual environment and install the dependencies.
+Install the dependencies.
 
-Using `uv`:
+Using [`uv`](https://docs.astral.sh/uv/) (recommended, it reads `pyproject.toml` and `uv.lock`):
 
 ```bash
-uv venv
-uv pip install openai python-dotenv
+uv sync
 ```
 
 Or using `pip`:
@@ -61,6 +60,14 @@ The `.env` file is listed in `.gitignore`, so your key is never uploaded to GitH
 
 ## Usage
 
+With `uv`:
+
+```bash
+uv run code_reviewer.py path/to/your_file.py
+```
+
+Or with `pip` (after activating your virtual environment):
+
 ```bash
 python code_reviewer.py path/to/your_file.py
 ```
@@ -68,7 +75,7 @@ python code_reviewer.py path/to/your_file.py
 Example:
 
 ```bash
-python code_reviewer.py test.py
+uv run code_reviewer.py test.py
 ```
 
 Example output:
@@ -103,6 +110,9 @@ The tool prints a clear message instead of a long traceback when:
 ```
 ai-code-reviewer-cli/
 ├── code_reviewer.py   # the whole program
+├── pyproject.toml     # project metadata and dependencies
+├── uv.lock            # exact dependency versions
+├── .python-version    # Python version used by uv
 ├── .env.example       # template for your environment variables
 ├── .gitignore         # keeps .env out of Git
 └── README.md
