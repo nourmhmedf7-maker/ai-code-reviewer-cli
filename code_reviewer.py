@@ -54,7 +54,7 @@ try:
 
 
     """
-    time.sleep(3)
+    
 
     response = client.responses.create(
         model = "openai/gpt-oss-20b",
